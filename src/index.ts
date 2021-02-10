@@ -53,11 +53,10 @@ async function main() {
         repo,
         // @ts-ignore
         workflow_id,
-        branch,
       });
 
-      const branchWorkflows = data.workflow_runs.filter(run => run.head_branch === branch);
-      console.log(`Found ${branchWorkflows.length} runs for workflow ${workflow_id} on branch ${branch}`);
+      const branchWorkflows = data.workflow_runs;
+      console.log(`Found ${branchWorkflows.length} runs for workflow ${workflow_id} on all branchs and tags!`);
       console.log(branchWorkflows.map(run => `- ${run.html_url}`).join('\n'));
 
       const runningWorkflows = branchWorkflows.filter(run =>
