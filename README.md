@@ -28,6 +28,8 @@ jobs:
           access_token: ${{ github.token }}
 ```
 
+This changes will not be published upstream (for now), since we think that this is not the expected behavior for all users.
+
 # Cancel Workflow Action
 
 This is a GitHub Action that will cancel any previous runs that are not `completed` for a given workflow.
