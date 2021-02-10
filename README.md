@@ -28,7 +28,7 @@ jobs:
           access_token: ${{ github.token }}
 ```
 
-The PR will not be published upstream (for now), since we think that this is not the expected behavior for all users.
+This changes will not be published upstream (for now), since we think that this is not the expected behavior for all users.
 
 # Cancel Workflow Action
 
