@@ -1,3 +1,33 @@
+# This fork:
+
+This fork helps to cancel the runs in all branchs, when you use the workflow with `on: [prereleased released]`.
+
+Without this changes, the cancel-worflow will check the runs running in the specific released or prereleased tag. 
+
+For example, if you have a prerelease, with a tag "1.1.1" , the cancel-workflow will check the runs running with the `head_branch` (from the API) = 1.1.1 and ignore all the runs that start with the previous released or prereleased tags.
+
+Ignoring the branch, the cancel-workflow will call the API and get all the runs that match the `workflow_id` and cancel this runs.
+
+Usage example:
+
+```yml
+name: Prereleased
+
+on:
+  release:
+    types: [ prereleased ]
+
+jobs:
+  cancel_previous:
+    name: 'Cancel Previous Runs'
+    runs-on: ubuntu-20.04
+    timeout-minutes: 3
+    steps:
+      - uses: ydataai/cancel-workflow-action@0.7.0-fix
+        with:
+          access_token: ${{ github.token }}
+```
+
 # Cancel Workflow Action
 
 This is a GitHub Action that will cancel any previous runs that are not `completed` for a given workflow.
